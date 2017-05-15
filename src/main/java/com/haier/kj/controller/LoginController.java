@@ -35,16 +35,18 @@ public class LoginController{
      * @param userName
      * @param password
      * @return
-     * 对应数据库表为
+     * 对应数据库表为 meifa.
      */
     @RequestMapping(value="/doLogin")
     @ResponseBody
-    public ModelAndView saveUser(User user){
+    public Object saveUser(User user){
     	  logger.info("--------------login---------------");
     	  logger.info("userName="+user.getUserName());
     	  logger.info("userName="+user.getPassWord());
     	  logger.info("userName="+user.getRoles());
-		  return null;
+    	  
+    	  User resUser=iUserService.findUserService(user);
+		  return resUser;
      }
 
 }
