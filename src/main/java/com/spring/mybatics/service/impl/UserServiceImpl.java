@@ -34,7 +34,7 @@ public class UserServiceImpl implements IUserService {
 			}
 			return serviceResult;
 		}catch (Exception e) {
-			throw new BusinessException(BusinessExceptionCode.param_error, "已存在手机，请核实是否已注册");
+			throw new BusinessException(BusinessExceptionCode.param_error, "已存在手机或者理发门店没有选择，请重试");
 		}
 		
 	}
@@ -120,7 +120,7 @@ public class UserServiceImpl implements IUserService {
 	@Override
 	public ServiceResult searchUserByphoneOrNameService(Hair_employee user) {
 		ServiceResult serviceResult=new ServiceResult();
-		if(user.getUserName().trim()=="" && user.getPhoneNumber().trim()==""){
+		if(user.getUserName()==null && user.getPhoneNumber()==null){
 			throw new BusinessException(BusinessExceptionCode.param_error, "请输入要查询的用户姓名或者电话信息");
 		}
 		List<Hair_employee> listUser=null;

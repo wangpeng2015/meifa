@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 import com.haier.result.ServiceResult;
 import com.haier.result.exception.BusinessException;
 import com.haier.result.exception.ExceptionConstants.BusinessExceptionCode;
-import com.spring.mybatics.dao.ICustomerDao;
-import com.spring.mybatics.dao.IEmployeeDao;
+import com.spring.mybatics.dao.ICustomerDAO;
+import com.spring.mybatics.dao.IEmployeeDanDao;
 import com.spring.mybatics.dao.IOrderDao;
 import com.spring.mybatics.dao.IStoreIncomeDao;
 import com.spring.mybatics.dao.IStoresDao;
@@ -32,12 +32,12 @@ public class OrderServiceImpl implements IOrderService{
 	 * 客户vip
 	 */
 	@Resource
-	private ICustomerDao iCustomerDao;
+	private ICustomerDAO iCustomerDao;
 	/**
 	 * 员工与单据
 	 */
 	@Resource
-	private IEmployeeDao iEmployeeDao;
+	private IEmployeeDanDao iEmployeeDanDao;
 	/**
 	 * 门店
 	 */
@@ -133,7 +133,7 @@ public class OrderServiceImpl implements IOrderService{
 					int uu=iCustomerDao.updateCustomer(new BigDecimal(Double.valueOf(resDouble)),danju.getCustomer_phone());
 					if(uu==1){
 						//保存店员和单据价格字段
-						int empdan=iEmployeeDao.saveEmployeeDanDao(danju.getDanju_applicant_id(),danju.getDanju_id(),danju.getDanju_price());
+						int empdan=iEmployeeDanDao.saveEmployeeDanDao(danju.getDanju_applicant_id(),danju.getDanju_id(),danju.getDanju_price());
 						if(empdan==1){
 							//更新店的金额
 							int income=iStoreIncomeDao.updateStoreIncomeDay(danju.getDanju_storesCode(),danju.getDanju_price());
