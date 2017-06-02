@@ -17,7 +17,7 @@ public class InterceptorDemo01 extends HandlerInterceptorAdapter{
 	    public void postHandle(  
 	            HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView)  
 	            throws Exception { 
-	    	System.out.println("postHandle");
+	    	super.postHandle(request, response, handler, modelAndView);
 	    }  
 	    public void afterCompletion(  
 	            HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)  
