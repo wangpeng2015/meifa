@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.spring.mybatics.dao.ICustomerDao">
+<mapper namespace="com.spring.mybatics.dao.ICustomerDAO">
 	<!-- =========================================================== -->
 	<!-- 定义resultMap -->
 	<!-- =========================================================== -->
@@ -53,83 +53,65 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<!-- 实体的保存法方法 -->
-	<insert id="save" parameterType="hair_customers"  useGeneratedKeys="true" keyProperty="danju_id" >
-		insert into  hair_danju
+	<insert id="save" parameterType="hair_customers"  useGeneratedKeys="true" keyProperty="customer_id" >
+		insert into  hair_customers
 		<trim prefix="(" suffix=")" suffixOverrides="," >
-			<if test="danju_name!=null">
-				danju_name ,
+			<if test="customer_name!=null">
+				customer_name ,
 			</if>
-			<if test="danju_message!=null">
-				danju_message ,
+			<if test="customer_code!=null">
+				customer_code ,
 			</if>
-			<if test="danju_price!=null">
-				danju_price ,
+			<if test="customer_phoneNumber!=null">
+				customer_phoneNumber ,
 			</if>
-			<if test="danju_applicant!=null">
-				danju_applicant ,
+			<if test="customer_address!=null">
+				customer_address ,
 			</if>
-			<if test="danju_applicant_id!=null">
-				danju_applicant_id ,
+			<if test="customer_money!=null">
+				customer_money ,
 			</if>
-			<if test="danju_deal!=null">
-				danju_deal ,
+			<if test="customer_isVip!=null">
+				customer_isVip ,
 			</if>
-			<if test="danju_deal_code!=null">
-				danju_deal_code ,
+			<if test="customer_integral!=null">
+				customer_integral ,
 			</if>
-			<if test="danju_isConfirm!=null">
-				danju_isConfirm ,
+			<if test="customer_storeCode!=null">
+				customer_storeCode ,
 			</if>
-			<if test="danju_invalid!=null">
-				danju_invalid ,
-			</if>
-			<if test="danju_isVip!=null">
-				danju_isVip ,
-			</if>
-			<if test="danju_vipID!=null">
-				danju_vipID ,
-			</if>
-			<if test="danju_dealTime!=null">
-				danju_dealTime
+			<if test="updateTime!=null">
+				updateTime 
 			</if>
 		</trim>
 		VALUES
 		<trim prefix="(" suffix=")" suffixOverrides="," >
-			<if test="danju_name!=null">
-				#{danju_name}	,
+			<if test="customer_name!=null">
+				#{customer_name} ,
 			</if>
-			<if test="danju_message!=null">
-				#{danju_message}	,
+			<if test="customer_code!=null">
+				#{customer_code} ,
 			</if>
-			<if test="danju_price!=null">
-				#{danju_price}	,
+			<if test="customer_phoneNumber!=null">
+				#{customer_phoneNumber}	,
 			</if>
-			<if test="danju_applicant!=null">
-				#{danju_applicant} ,
+			<if test="customer_address!=null">
+				#{customer_address} ,
 			</if>
-			<if test="danju_applicant_id!=null">
-				#{danju_applicant_id} ,
+			<if test="customer_money!=null">
+				#{customer_money} ,
 			</if>
-			<if test="danju_deal!=null">
-				#{danju_deal} ,
+			<if test="customer_isVip!=null">
+				#{customer_isVip} ,
 			</if>
-			<if test="danju_deal_code!=null">
-				#{danju_deal_code} ,
+			<if test="customer_integral!=null">
+				#{customer_integral} ,
 			</if>
-			<if test="danju_isConfirm!=null">
-				#{danju_isConfirm}	,
+			<if test="customer_storeCode!=null">
+				#{customer_storeCode} ,
 			</if>
-			<if test="danju_invalid!=null">
-				#{danju_invalid} ,
-			</if>
-			<if test="danju_isVip!=null">
-				#{danju_isVip} ,
-			</if>
-			<if test="danju_vipID!=null">
-				#{danju_vipID} ,
-			</if>
-			<if test="danju_dealTime!=null">
-				#{danju_dealTime}
+			<if test="updateTime!=null">
+				#{updateTime} 
 			</if>
 		</trim>
 	</insert>

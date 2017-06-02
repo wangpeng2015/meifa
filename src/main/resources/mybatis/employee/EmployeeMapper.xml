@@ -9,7 +9,7 @@
 	</delete>
 	
 	<select id="findByParamsByphoneOrNameService" resultMap="BaseResultMap">
-		select * from hair_employee
+		select id,userCode,phoneNumber,userName,storeCode,storeName,idCard,createTime,updateTime from hair_employee
 		where phoneNumber= #{entity.phoneNumber} or userName= #{entity.userName}
 	</select>
 

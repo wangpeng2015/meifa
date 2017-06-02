@@ -6,7 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- =========================================================== -->
 	<!-- 定义resultMap -->
 	<!-- =========================================================== -->
-	<resultMap id="BaseResultMap" type="userDTO" >
+	<resultMap id="BaseResultMap" type="hair_employee" >
 	    <id column="id" property="id" jdbcType="INTEGER" />
 	    <result column="userCode" property="userCode" jdbcType="VARCHAR" />
 	    <result column="userName" property="userName" jdbcType="VARCHAR" />
@@ -59,7 +59,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<!-- 实体的保存法方法 -->
-	<insert id="save" parameterType="com.spring.mybatics.domain.User"  useGeneratedKeys="true" keyProperty="id" >
+	<insert id="save" parameterType="hair_employee"  useGeneratedKeys="true" keyProperty="id" >
 		insert into  hair_employee
 		<trim prefix="(" suffix=")" suffixOverrides="," >
 			<if test="userCode!=null">
@@ -132,7 +132,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<!-- 实体的更新方法 -->
-	<update id="update" parameterType="com.spring.mybatics.domain.User">
+	<update id="update" parameterType="hair_employee">
 		update hair_employee
 		<set>
 			<if test="userCode!=null">

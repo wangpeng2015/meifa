@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.spring.mybatics.dao.ICustomerDao" >
-  
+<mapper namespace="com.spring.mybatics.dao.ICustomerDAO" >
   
   	<select id="findCustomerMoneyByPhoneNumber" resultType="java.math.BigDecimal">
   		select customer_money from hair_customers where customer_phoneNumber = #{customer_phoneNumber}
@@ -17,5 +16,53 @@
 		</set>
 		where customer_phoneNumber = #{customer_phoneNumber}
 	</update>	
+	
+	<select id="searchCustomerListByStoreCode" resultMap="customerResultMap">
+		select customer_name,customer_code,customer_phoneNumber,customer_storeCode,customer_isVip,customer_money,createTime
+		from hair_customers where 
+		<if test="storeCode!=null">
+			customer_storeCode = #{storeCode}
+		</if>
+	</select>
+	
+	<delete id="deleteCustomerByphoneDao" parameterType="String">
+		delete from hair_customers
+		where customer_phoneNumber = #{phoneNumber}
+	</delete>
+	
+	<!-- 实体的更新方法 -->
+	<update id="updateCustomerByPhone" parameterType="hair_customers">
+		update hair_customers
+		<set>
+			<if test="customer_name!=null">
+				customer_name = #{customer_name} ,
+			</if>
+			<if test="customer_code!=null">
+				customer_code = #{customer_code} ,
+			</if>
+			<if test="customer_phoneNumber!=null">
+				customer_phoneNumber = #{customer_phoneNumber} ,
+			</if>
+			<if test="customer_address!=null">
+				customer_address = #{customer_address} ,
+			</if>
+			<if test="customer_money!=null">
+				customer_money = #{customer_money} ,
+			</if>
+			<if test="customer_isVip!=null">
+				customer_isVip = #{customer_isVip} ,
+			</if>
+			<if test="customer_integral!=null">
+				customer_integral = #{customer_integral} ,
+			</if>
+			<if test="customer_storeCode!=null">
+				customer_storeCode = #{customer_storeCode} ,
+			</if>
+			<if test="updateTime!=null">
+				updateTime = #{updateTime} 
+			</if>
+		</set>
+		where customer_phoneNumber = #{customer_phoneNumber}
+	</update>
 
 </mapper>
