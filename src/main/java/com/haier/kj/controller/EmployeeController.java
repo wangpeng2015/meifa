@@ -15,7 +15,7 @@ import com.spring.mybatics.util.LoginContextUtil;
 
 
 /**
- * 员工信息controller
+ * 员工操作controller
  * @author wp
  *
  */

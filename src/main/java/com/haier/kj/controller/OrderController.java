@@ -15,7 +15,7 @@ import com.spring.mybatics.util.LoginContextUtil;
 
 /**
  * 
- * 订单controller
+ * 订单操作controller
  * @author wp
  *
  */
@@ -25,7 +25,6 @@ public class OrderController {
 	
 	@Autowired
 	private IOrderService orderService;
-	
 	
 	/**
 	 * 
