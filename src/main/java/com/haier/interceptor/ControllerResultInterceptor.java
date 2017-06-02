@@ -34,7 +34,7 @@ public class ControllerResultInterceptor {
 			}else{
 				springResult.setResultBean(proceed);
 			}
-			if(springResult.getResultCode()==null || springResult.getResultCode()==""){
+			if(springResult.getResultCode()==null || "".equals(springResult.getResultCode())){
 				springResult.setResultCode(SpringResultCode.SUCCESS);
 			}
 			LOG.info("==============controller正常返回===============");
