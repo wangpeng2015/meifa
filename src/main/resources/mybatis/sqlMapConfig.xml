@@ -22,7 +22,7 @@
 		<setting name="lazyLoadTriggerMethods" value="equals,clone,hashCode,toString" />
 	</settings>
 	<typeAliases>
-		<typeAlias alias="userDTO" type="com.spring.mybatics.domain.Hair_employee"/>
+		<typeAlias alias="hair_employee" type="com.spring.mybatics.domain.Hair_employee"/>
 		<typeAlias alias="hair_stores" type="com.spring.mybatics.domain.Hair_stores"/>
 		<typeAlias alias="hair_danju" type="com.spring.mybatics.domain.Hair_danju"/>
 		<typeAlias alias="hairCutType" type="com.spring.mybatics.domain.HairCutType"/>
