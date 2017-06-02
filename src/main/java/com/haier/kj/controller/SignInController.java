@@ -11,7 +11,7 @@ import com.spring.mybatics.service.IUserService;
 
 
 /**
- * 注册controller
+ * 注册controller，目前没有使用
  * @author Administrator
  *
  */
