@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.spring.mybatics.dao.IUserDao" >
+  
+  <!-- 按照电话删除一条用户信息 -->
+	<delete id="deleteUserByPhoneNDAO" parameterType="String">
+		delete from hair_employee
+		where phoneNumber = #{phoneNumber}
+	</delete>
+	
+	<select id="findByParamsByphoneOrNameService" resultMap="BaseResultMap">
+		select * from hair_employee
+		where phoneNumber= #{entity.phoneNumber} or userName= #{entity.userName}
+	</select>
+
+</mapper>

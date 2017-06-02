@@ -82,8 +82,9 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
             <tx:method name="edit*" />
             <tx:method name="delete*" />
             <tx:method name="remove*" />
-            <tx:method name="repair" />
-            <tx:method name="deleteAndRepair" />
+            <tx:method name="repair*" />
+            <tx:method name="deleteAndRepair*" />
+            <tx:method name="deal*" />
             <!-- 以如下关键字开头的方法不使用事物 -->
             <tx:method name="get*" propagation="SUPPORTS" />
             <tx:method name="find*" propagation="SUPPORTS" /><!-- 如当前有transaction，则在transaction状态下执行；如果当前没有transaction，在无transaction状态下执行； -->

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.spring.mybatics.dao.IOrderDao" >
+  
+    <!-- 查询此实体表中所有数据的数量 -->
+	<select id="getAllOrderDAO" resultMap="danjuResultMap">
+		select <include refid="Base_Column_List"/>
+		from hair_danju
+	</select>
+	
+	
+	<!-- 实体的更新方法 -->
+	<update id="updateDanjuConfirm" parameterType="hair_danju">
+		update hair_danju
+		<set>
+			<if test="danju_isConfirm!=null">
+				 danju_isConfirm = #{danju_isConfirm}
+			</if>
+		</set>
+		where danju_id = #{danju_id}
+	</update>	
+
+</mapper>
