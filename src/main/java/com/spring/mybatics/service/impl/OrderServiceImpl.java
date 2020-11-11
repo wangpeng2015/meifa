@@ -1,29 +1,23 @@
 package com.spring.mybatics.service.impl;
 
-import java.math.BigDecimal;
-import java.util.List;
-
-import javax.annotation.Resource;
-
-import org.springframework.stereotype.Service;
-
 import com.haier.result.ServiceResult;
 import com.haier.result.exception.BusinessException;
 import com.haier.result.exception.ExceptionConstants.BusinessExceptionCode;
-import com.spring.mybatics.dao.ICustomerDAO;
-import com.spring.mybatics.dao.IEmployeeDanDao;
-import com.spring.mybatics.dao.IOrderDao;
-import com.spring.mybatics.dao.IStoreIncomeDao;
-import com.spring.mybatics.dao.IStoresDao;
+import com.spring.mybatics.dao.*;
 import com.spring.mybatics.domain.Hair_danju;
 import com.spring.mybatics.service.IOrderService;
+import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
+import java.math.BigDecimal;
+import java.util.List;
 
 
 @Service("orderService")
 public class OrderServiceImpl implements IOrderService{
 
 	/**
-	 * 
+	 *
 	 * 订单
 	 */
 	@Resource
@@ -32,12 +26,12 @@ public class OrderServiceImpl implements IOrderService{
 	 * 客户vip
 	 */
 	@Resource
-	private ICustomerDAO iCustomerDao;
+	private ICustomerDao iCustomerDao;
 	/**
 	 * 员工与单据
 	 */
 	@Resource
-	private IEmployeeDanDao iEmployeeDanDao;
+	private IEmployeeDao iEmployeeDanDao;
 	/**
 	 * 门店
 	 */
@@ -48,9 +42,9 @@ public class OrderServiceImpl implements IOrderService{
 	 */
 	@Resource
 	private IStoreIncomeDao iStoreIncomeDao;
-	
+
 	/**
-	 * 
+	 *
 	 * 查询所有单据
 	 */
 	@Override
@@ -67,9 +61,9 @@ public class OrderServiceImpl implements IOrderService{
 	}
 
 	/**
-	 * 
+	 *
 	 * 保存单据
-	 * 
+	 *
 	 */
 	@Override
 	public ServiceResult saveDanjuService(Hair_danju danju) {
@@ -92,13 +86,13 @@ public class OrderServiceImpl implements IOrderService{
 		} catch (Exception e) {
 			throw new BusinessException(BusinessExceptionCode.param_error, "保存单据失败!");
 		}
-		
+
 	}
 
 	/**
-	 * 
+	 *
 	 * 处理订单
-	 * 
+	 *
 	 */
 	@Override
 	public ServiceResult dealOrderService(Hair_danju danju) {
@@ -115,7 +109,7 @@ public class OrderServiceImpl implements IOrderService{
 		} catch (Exception e) {
 			throw new BusinessException(BusinessExceptionCode.param_error, "审核失败请重新审核");
 		}
-		
+
 		if(isSave==1){
 			//判断如果是vip,则进行金额减法 vip   不等于0就是会员
 			if(!"0".equals(danju.getDanju_isVip().trim())){

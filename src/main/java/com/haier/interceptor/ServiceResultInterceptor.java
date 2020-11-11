@@ -1,8 +1,7 @@
 package com.haier.interceptor;
 
+import com.alibaba.druid.util.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.bana.common.util.basic.StringUtils;
-import org.bana.common.util.exception.ThrowableUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,20 +10,20 @@ import com.haier.result.SpringResultCode;
 import com.haier.result.exception.BusinessException;
 
 
-/** 
- * @ClassName: DubboResultInterceptor 
- * @Description: 对dubbo返回值进行统一封装的方法 
- *  
+/**
+ * @ClassName: DubboResultInterceptor
+ * @Description: 对dubbo返回值进行统一封装的方法
+ *
  */
 public class ServiceResultInterceptor {
-	
+
 	private static final Logger LOG = LoggerFactory.getLogger(ServiceResultInterceptor.class);
-	/** 
+	/**
 	* @Description: 封装service接口对应的返回值
 	* @param jp
 	* @return
-	* @throws Throwable  
-	*/ 
+	* @throws Throwable
+	*/
 	public Object around(ProceedingJoinPoint jp){
 		ServiceResult serviceResult = new ServiceResult();
 		// 执行方法
@@ -43,7 +42,7 @@ public class ServiceResultInterceptor {
 			//异常编码
 			if(e instanceof BusinessException){
 				BusinessException be = (BusinessException)e;
-				if(be.getExceptionCode() != null && !StringUtils.isBlank(be.getExceptionCode().getErrorCode())){
+				if(be.getExceptionCode() != null && !StringUtils.isEmpty(be.getExceptionCode().getErrorCode())){
 					serviceResult.setResultCode(be.getExceptionCode().getErrorCode());
 					serviceResult.setMessage(be.getMessage());
 				}else{
@@ -55,11 +54,11 @@ public class ServiceResultInterceptor {
 				serviceResult.setMessage(e.getMessage());
 			}
 			//把错误的信息放入栈中，打印到前台
-			serviceResult.setErrorStackTrack(ThrowableUtil.getStackTrace(e));
+			serviceResult.setErrorStackTrack(e.getMessage());
 			LOG.info("==============异常返回===============");
 			return serviceResult;
-		} 
+		}
 
 	}
-	
+
 }

@@ -4,15 +4,27 @@
 	<groupId>com.spring.mybatics</groupId>
 	<artifactId>wpSpringMybatics</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>6</source>
+					<target>6</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 	<packaging>war</packaging>
 	<!-- springMVC  spring  mybatis   -->
-	
-	<properties>  
-         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>  
+
+	<properties>
+         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
          <spring.version>3.2.6.RELEASE</spring.version>
          <!-- <spring.version>3.1.2.RELEASE</spring.version> -->
-    </properties> 
-  
+    </properties>
+
 	<dependencies>
 		<dependency>
 				<groupId>javax.servlet</groupId>
@@ -68,7 +80,7 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-		
+
 		<dependency>
 		    <groupId>org.hibernate</groupId>
 		    <artifactId>hibernate-validator</artifactId>
@@ -117,28 +129,28 @@
 			<artifactId>fastjson</artifactId>
 			<version>1.1.41</version>
 		</dependency>
-		
+
 		<!--Druid连接池包 -->
          <dependency>
              <groupId>com.alibaba</groupId>
              <artifactId>druid</artifactId>
              <version>1.0.12</version>
          </dependency>
-         
+
          <!--aspectjweaver包 -->
          <dependency>
              <groupId>org.aspectj</groupId>
              <artifactId>aspectjweaver</artifactId>
              <version>1.8.5</version>
          </dependency>
-         
+
          <!-- 导入dbcp的jar包，用来在applicationContext.xml中配置数据库 -->
 		<dependency>
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>
 			<version>1.2.2</version>
 		</dependency>
-		
+
 		<dependency>
 		    <groupId>org.codehaus.jackson</groupId>
 		    <artifactId>jackson-core-asl</artifactId>
@@ -154,19 +166,25 @@
 		    <artifactId>jackson-databind</artifactId>
 		    <version>2.8.0</version>
 		</dependency>
-		
-		 <dependency>
+
+		 <!--<dependency>
 			<groupId>org.bana</groupId>
 			<artifactId>common-util</artifactId>
 			 <version>0.0.5-SNAPSHOT</version>
+		</dependency>-->
+
+		<dependency>
+          <groupId>org.slf4j</groupId>
+          <artifactId>slf4j-log4j12</artifactId>
+          <version>1.5.8</version>
 		</dependency>
-		
-		<dependency>  
-          <groupId>org.slf4j</groupId>  
-          <artifactId>slf4j-log4j12</artifactId>  
-          <version>1.5.8</version>  
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
 		</dependency>
-		
+
 	</dependencies>
 	<!-- Maven私服配置 -->
 	<repositories>

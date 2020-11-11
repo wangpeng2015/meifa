@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.bana.common.util.page.PageCond;
+import com.spring.mybatics.domain.PageBean;
 import org.springframework.stereotype.Service;
 
 import com.haier.result.ServiceResult;
@@ -16,7 +16,7 @@ import com.spring.mybatics.service.IUserService;
 
 @Service("userService")
 public class UserServiceImpl implements IUserService {
-	
+
 	@Resource
 	private IUserDao iUserDao;
 
@@ -36,9 +36,9 @@ public class UserServiceImpl implements IUserService {
 		}catch (Exception e) {
 			throw new BusinessException(BusinessExceptionCode.param_error, "已存在手机或者理发门店没有选择，请重试");
 		}
-		
+
 	}
-	
+
 	/**
 	 * 根据用户名和密码查询用户，登录使用
 	 * @param user
@@ -52,7 +52,7 @@ public class UserServiceImpl implements IUserService {
 		if(user.getPassWord()==null || user.getPassWord().trim()==""){
 			throw new BusinessException(BusinessExceptionCode.login_null_password, "密码不能为空");
 		}
-		PageCond pageCond=new PageCond(); 
+		PageBean pageCond=new PageBean();
 		ServiceResult serviceResult=new ServiceResult();
 		List<Hair_employee> users=iUserDao.findByParams(user,pageCond);
 		if(user!=null && users.size()>0){
@@ -61,12 +61,12 @@ public class UserServiceImpl implements IUserService {
 			throw new BusinessException(BusinessExceptionCode.no_user, "没有该用户");
 		}
 		return serviceResult;
-		
+
 	}
-	
+
 	/**
 	 * 根据用户的id删除用户信息
-	 * 
+	 *
 	 */
 	public ServiceResult deleteUserById(Hair_employee user){
 		ServiceResult serviceResult=new ServiceResult();
@@ -87,10 +87,10 @@ public class UserServiceImpl implements IUserService {
 		}
 	}
 
-	
+
 	/**
 	 * 根据用户的电话删除用户信息
-	 * 
+	 *
 	 */
 	@Override
 	public ServiceResult deleteUserByPhoneNService(Hair_employee user) {
@@ -110,12 +110,12 @@ public class UserServiceImpl implements IUserService {
 		} catch (Exception e) {
 			throw new BusinessException(BusinessExceptionCode.param_error, "确认是否有此条信息");
 		}
-		
+
 	}
-	
+
 	/**
 	 * 根据电话和姓名查询用户信息
-	 * 
+	 *
 	 */
 	@Override
 	public ServiceResult searchUserByphoneOrNameService(Hair_employee user) {
@@ -136,10 +136,10 @@ public class UserServiceImpl implements IUserService {
 		}
 		return serviceResult;
 	}
-	
+
 	/**
 	 * 根据用户的id进行更新操作
-	 * 
+	 *
 	 */
 	@Override
 	public ServiceResult updateUserByIdService(Hair_employee user) {
@@ -159,8 +159,8 @@ public class UserServiceImpl implements IUserService {
 		} catch (Exception e) {
 			throw new BusinessException(BusinessExceptionCode.param_error, "更新出错!");
 		}
-		
+
 	}
-	
-	
+
+
 }

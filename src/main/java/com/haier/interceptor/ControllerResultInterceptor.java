@@ -1,7 +1,6 @@
 package com.haier.interceptor;
 
 import org.aspectj.lang.ProceedingJoinPoint;
-import org.bana.common.util.exception.ThrowableUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,14 +11,14 @@ import com.haier.result.SpringResultCode;
 public class ControllerResultInterceptor {
 
 	private static final Logger LOG = LoggerFactory.getLogger(ControllerResultInterceptor.class);
-	
-	
-	/** 
+
+
+	/**
 	* @Description: 封装controller接口对应的返回值
 	* @param jp
 	* @return
-	* @throws Throwable  
-	*/ 
+	* @throws Throwable
+	*/
 	public Object around(ProceedingJoinPoint jp){
 		SpringResult springResult = new SpringResult();
 		// 执行方法
@@ -45,7 +44,7 @@ public class ControllerResultInterceptor {
 			springResult.setMessage(e.getMessage());
 			LOG.info("==============controller异常返回===============");
 			return springResult;
-		} 
+		}
 
 	}
 }

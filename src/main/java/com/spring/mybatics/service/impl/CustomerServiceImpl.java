@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.haier.result.ServiceResult;
 import com.haier.result.exception.BusinessException;
 import com.haier.result.exception.ExceptionConstants.BusinessExceptionCode;
-import com.spring.mybatics.dao.ICustomerDAO;
+import com.spring.mybatics.dao.ICustomerDao;
 import com.spring.mybatics.domain.Hair_customers;
 import com.spring.mybatics.service.ICustomerService;
 
@@ -17,8 +17,8 @@ import com.spring.mybatics.service.ICustomerService;
 public class CustomerServiceImpl implements ICustomerService{
 
 	@Autowired
-	private ICustomerDAO iCustomerDAO;
-	
+	private ICustomerDao iCustomerDAO;
+
 	@Override
 	public ServiceResult saveCustomer(Hair_customers customers) {
 		ServiceResult serviceResult=null;
@@ -33,7 +33,7 @@ public class CustomerServiceImpl implements ICustomerService{
 		}
 		return serviceResult;
 	}
-	
+
 	/**
 	 * 根据门店编码查询门店顾客信息
 	 */
@@ -71,7 +71,7 @@ public class CustomerServiceImpl implements ICustomerService{
 		}
 		return serviceResult;
 	}
-	
+
 	/**
 	 * 根据电话进行用户信息更新
 	 */
